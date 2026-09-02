@@ -4,6 +4,8 @@ function describeValue(value) {
     const result = value ? "truthy" : "falsy"
     return `"${valueType} | ${result}"`;
 }
+
+
 // Question No. 2
 function getDayType(day) {
     const newDay = day.toLowerCase().trim();
@@ -25,5 +27,22 @@ function getDayType(day) {
     }
     else {
         return "Invalid Day";
+    }
+}
+
+
+// Question No. 3
+function validateUsername(username) {
+    if (username.length < 4) {
+        return "Too Short";
+    }
+    else if (username.includes(" ")) {
+        return "No Space Allowed";
+    }
+    else if (username.toLowerCase().includes("admin")) {
+        return "Reserved Word"
+    }
+    else {
+        return "Available"
     }
 }
