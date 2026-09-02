@@ -49,17 +49,19 @@ function validateUsername(username) {
 
 
 // Question No. 4
-function validateUsername(username) {
-    if (username.length < 4) {
-        return "Too Short";
+function getCngFare(distance, isNight = false, waitingMinutes = 0) {
+    let fare = 50;
+    if (distance > 2) {
+        const extraDistance = distance - 2;
+        // console.log(extraDistance)
+        const distanceCharge = extraDistance * 15;
+        // console.log(distanceCharge)
+        fare = fare + distanceCharge;
     }
-    else if (username.includes(" ")) {
-        return "No Space Allowed";
+    const waitingCharge = waitingMinutes * 2
+    fare = fare + waitingCharge;
+    if (isNight) {
+        fare = fare + (fare * 20 / 100)
     }
-    else if (username.toLowerCase().includes("admin")) {
-        return "Reserved Word"
-    }
-    else {
-        return "Available"
-    }
+    return fare;
 }
